@@ -2,7 +2,7 @@ title: Checking the Certutil Download #Title of your rule
 id: 9304309c-1008-4eda-9f6d-c505c049693b #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
 status: test #stage of your rule testing 
 description: Detecting the certutil download #Details about the detection intensions of the rule.
-author: #Who wrote the rule.
+author: Bhagavan Bollina #Who wrote the rule.
 date: #When was the rule written.
 modified: #When was it updated
 logsource:
@@ -25,3 +25,6 @@ level: medium #Severity level of the detection rule.
 tags: #Associated TTPs from MITRE ATT&CK
   - attack.credential_access #MITRE Tactic
   - attack.t1110 #MITRE Technique
+references: #Any references to the detection rule.
+  - https://www.cybereason.com/blog/certutil-exe-abuse
+  - https://www.cybereason.com/blog/certutil-exe-abuse-part-2
