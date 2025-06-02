@@ -1,6 +1,6 @@
 # 🧠 DetRan: Detection Engineering in Action
 
-## 📌 About
+## About
 
 **DetRan** (short for *Detection + Ransomware*) is a personal and evolving repository focused on building and refining **Sigma detection rules** inspired by real-world threats, red team labs, malware campaigns, and adversary tradecraft I encounter in my day-to-day experiences as a security engineer.
 
