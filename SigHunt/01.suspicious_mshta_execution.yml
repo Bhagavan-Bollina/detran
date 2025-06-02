@@ -10,9 +10,9 @@ logsource:
   service: sysmon
 detection:
   selection:
-    Parent Image: chrome.exe #Search identifiers for the detection. Refer to the required fields provided in the task. 
-    Image: mshta.exe
-    Command Line: 'C:\Windows\SysWOW64\mshta.exe C:\Users\victim\Downloads\update.hta'
+    EventID: 1
+    ParentImage: 'C:\Program Files\Google\Chrome\Application\chrome.exe' #Search identifiers for the detection. Refer to the required fields provided in the task. 
+    Image: 'C:\Windows\SysWOW64\mshta.exe'
   condition: selection #Action to be taken. Can use condition operators such as OR, AND, NOT, 
 fields: #List of associated fields that are important for the detection
 
@@ -22,3 +22,8 @@ level: medium #Severity level of the detection rule.
 tags: #Associated TTPs from MITRE ATT&CK
   - attack.credential_access #MITRE Tactic
   - attack.t1110 #MITRE Technique
+references: #Any references to the detection rule.
+  - https://www.microsoft.com/security/blog/2023/08/01/microsoft-detects-new-malware-campaigns-using-mshta-to-deliver-malicious-html-applications/
+  - https://www.bleepingcomputer.com/news/security/new-malicious-html-applications-used-to-deliver-malware/
+  - https://www.cybereason.com/blog/mshta-malicious-html-applications
+  - https://www.cybereason.com/blog/mshta-malicious-html-applications-part-2
