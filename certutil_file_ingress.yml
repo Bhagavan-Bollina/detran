@@ -1,0 +1,27 @@
+title: Checking the Certutil Download #Title of your rule
+id: 9304309c-1008-4eda-9f6d-c505c049693b #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
+status: test #stage of your rule testing 
+description: Detecting the certutil download #Details about the detection intensions of the rule.
+author: #Who wrote the rule.
+date: #When was the rule written.
+modified: #When was it updated
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1 #Search identifiers for the detection. Refer to the required fields provided in the task. 
+    CommandLine|contains|all:
+      - '-urlcache'
+      - '-split'
+      - '-f'
+    Image|endswith: 'certutil.exe' 
+  condition: selection #Action to be taken. Can use condition operators such as OR, AND, NOT, 
+fields: #List of associated fields that are important for the detection
+
+falsepositives: #Any possible false positives that could trigger the rule.
+
+level: medium #Severity level of the detection rule.
+tags: #Associated TTPs from MITRE ATT&CK
+  - attack.credential_access #MITRE Tactic
+  - attack.t1110 #MITRE Technique
