@@ -1,23 +1,28 @@
-title: #Title of your rule
-id: #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
-status: #stage of your rule testing 
-description: #Details about the detection intensions of the rule.
-author: #Who wrote the rule.
-date: #When was the rule written.
-modified: #When was it updated
+title: Detecting the cURL Exfiltration
+id: 29d3d4c1-4c55-4d4c-96d1-4e2307d6c622
+status: test
+description: Detecting the data exfiltration using cURL
+author: Bhagavan Bollina
+date: 2025-06-01
+modified: 2025-06-01
 logsource:
   product: windows
   service: sysmon
 detection:
   selection:
-    FieldName1: Value #Search identifiers for the detection. Refer to the required fields provided in the task. 
-    FieldName2: Value
-  condition: selection #Action to be taken. Can use condition operators such as OR, AND, NOT, 
-fields: #List of associated fields that are important for the detection
-
-falsepositives: #Any possible false positives that could trigger the rule.
-
-level: medium #Severity level of the detection rule.
-tags: #Associated TTPs from MITRE ATT&CK
-  - attack.credential_access #MITRE Tactic
-  - attack.t1110 #MITRE Technique
+    EventID: 1
+    Image|endswith: 'curl.exe'
+    CommandLine|contains:
+      - ' -d '
+  condition: selection
+fields:
+  - CommandLine
+  - Image
+  - ParentImage
+  - User
+falsepositives:
+  - Legitimate use of curl to interact with internal APIs or automation scripts
+level: medium
+tags:
+  - attack.exfiltration
+  - attack.t1041
