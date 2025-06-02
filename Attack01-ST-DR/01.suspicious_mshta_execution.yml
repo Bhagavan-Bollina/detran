@@ -1,0 +1,33 @@
+title: Malicious HTML Application
+id: 687e335e-8111-4521-a524-ebb139e18354
+status: test
+description: Detects the usage of Malicious HTML Application
+author: Bhagavan Bollina
+date: 2025-06-01
+modified: 2025-06-01
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1
+    ParentImage: 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+    Image: 'C:\Windows\SysWOW64\mshta.exe'
+  condition: selection
+fields:
+  - CommandLine
+  - ParentImage
+  - Image
+  - CurrentDirectory
+  - User
+falsepositives:
+  - Rare legitimate use of mshta from Chrome
+level: medium
+tags:
+  - attack.credential_access
+  - attack.t1110
+references:
+  - https://www.microsoft.com/security/blog/2023/08/01/microsoft-detects-new-malware-campaigns-using-mshta-to-deliver-malicious-html-applications/
+  - https://www.bleepingcomputer.com/news/security/new-malicious-html-applications-used-to-deliver-malware/
+  - https://www.cybereason.com/blog/mshta-malicious-html-applications
+  - https://www.cybereason.com/blog/mshta-malicious-html-applications-part-2
