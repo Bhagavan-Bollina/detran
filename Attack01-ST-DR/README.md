@@ -12,7 +12,7 @@ This repository contains custom Sigma rules developed to detect key attacker beh
 
 ---
 
-## 🧩 Incident Summary
+## Incident Summary
 
 **Attack Chain Breakdown:**
 
@@ -27,7 +27,7 @@ This repository contains custom Sigma rules developed to detect key attacker beh
 
 ---
 
-## 📄 Sigma Rules Developed
+## Sigma Rules Developed
 
 | Rule Title                              | Purpose                                                                 |
 |----------------------------------------|-------------------------------------------------------------------------|
