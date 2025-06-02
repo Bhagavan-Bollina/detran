@@ -1,0 +1,23 @@
+title: #Title of your rule
+id: #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
+status: #stage of your rule testing 
+description: #Details about the detection intensions of the rule.
+author: #Who wrote the rule.
+date: #When was the rule written.
+modified: #When was it updated
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    FieldName1: Value #Search identifiers for the detection. Refer to the required fields provided in the task. 
+    FieldName2: Value
+  condition: selection #Action to be taken. Can use condition operators such as OR, AND, NOT, 
+fields: #List of associated fields that are important for the detection
+
+falsepositives: #Any possible false positives that could trigger the rule.
+
+level: medium #Severity level of the detection rule.
+tags: #Associated TTPs from MITRE ATT&CK
+  - attack.credential_access #MITRE Tactic
+  - attack.t1110 #MITRE Technique
