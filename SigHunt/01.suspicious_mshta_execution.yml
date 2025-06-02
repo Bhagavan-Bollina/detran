@@ -1,8 +1,8 @@
-title: #Title of your rule
-id: #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
-status: #stage of your rule testing 
-description: #Details about the detection intensions of the rule.
-author: #Who wrote the rule.
+title: Malicious HTML Application #Title of your rule
+id: 687e335e-8111-4521-a524-ebb139e18354 #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
+status: test #stage of your rule testing 
+description: Detects the usage of Malicious HTML Application #Details about the detection intensions of the rule.
+author: Bhagavan Bollina #Who wrote the rule.
 date: #When was the rule written.
 modified: #When was it updated
 logsource:
