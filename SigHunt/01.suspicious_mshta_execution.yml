@@ -10,8 +10,9 @@ logsource:
   service: sysmon
 detection:
   selection:
-    FieldName1: Value #Search identifiers for the detection. Refer to the required fields provided in the task. 
-    FieldName2: Value
+    Parent Image: chrome.exe #Search identifiers for the detection. Refer to the required fields provided in the task. 
+    Image: mshta.exe
+    Command Line: 'C:\Windows\SysWOW64\mshta.exe C:\Users\victim\Downloads\update.hta'
   condition: selection #Action to be taken. Can use condition operators such as OR, AND, NOT, 
 fields: #List of associated fields that are important for the detection
 
