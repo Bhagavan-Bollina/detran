@@ -1,0 +1,23 @@
+title: Detecting the Ransomeware file encruyyption #Title of your rule
+id: 6221f004-7102-437a-8cbc-6b044c496db5 #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
+status: test #stage of your rule testing 
+description: Instruction: fill here #Details about the detection intensions of the rule.
+author: #Who wrote the rule.
+date: #When was the rule written.
+modified: #When was it updated
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1 #Search identifiers for the detection. Refer to the required fields provided in the task. 
+    TargetFilename|endswith: 'huntme'
+  condition: selection #Action to be taken. Can use condition operators such as OR, AND, NOT, 
+fields: #List of associated fields that are important for the detection
+
+falsepositives: #Any possible false positives that could trigger the rule.
+
+level: medium #Severity level of the detection rule.
+tags: #Associated TTPs from MITRE ATT&CK
+  - attack.credential_access #MITRE Tactic
+  - attack.t1110 #MITRE Technique
