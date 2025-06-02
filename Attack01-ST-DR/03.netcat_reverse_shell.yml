@@ -1,5 +1,5 @@
 title: Finding the Netcat Reverse shell access #Title of your rule
-id: b714724d-ed5b-4718-99b6-7ff27572aac6 #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
+id: 83be679f-9be7-44ef-bf28-2de90c3e416f #Universally Unique Identifier (UUID) Generate one from https://www.uuidgenerator.net
 status: test #stage of your rule testing 
 description: Detect the usage of certutil binary #Details about the detection intensions of the rule.
 author: Bhagavan Bollina #Who wrote the rule.
@@ -9,9 +9,15 @@ logsource:
   product: windows
   service: sysmon
 detection:
-  selection:
-    FieldName1: Value #Search identifiers for the detection. Refer to the required fields provided in the task. 
-    FieldName2: Value
+  selection1:
+    EventID: 1 #Search identifiers for the detection. Refer to the required fields provided in the task. 
+    Image|endswith: 'nc.exe' #Image path of the process that is being executed
+    CommandLine|contains|all: 
+            - '-e' #Command line arguments that are used to execute the process.
+    Hashes: Value #Hash of the file to be used for detection. This can be SHA256, MD5, or SHA1.
+  selection2:
+    Hashes: 523613A7B9DFA398CBD5EBD2DD0F4F38 #Search identifiers for the detection. Refer to the required fields provided in the task. 
+    Image|endswith: 'nc.exe'
   condition: selection #Action to be taken. Can use condition operators such as OR, AND, NOT, 
 fields: #List of associated fields that are important for the detection
 
@@ -21,3 +27,4 @@ level: medium #Severity level of the detection rule.
 tags: #Associated TTPs from MITRE ATT&CK
   - attack.credential_access #MITRE Tactic
   - attack.t1110 #MITRE Technique
+
