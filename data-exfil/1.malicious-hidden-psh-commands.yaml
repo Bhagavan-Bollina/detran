@@ -1,0 +1,35 @@
+title: Malicious Command Detection
+id: 0b967593-28e2-4e26-a9e1-c79b34b617f4
+status: experimental
+description: Detects the execution of potentially malicious commands based on specific command-line patterns.
+author: Bhagavan Bollina
+date: 2025-06-26
+logsource:
+    product: windows
+    service: process_creation
+detection:
+    selection:
+        CommandLine|has_any:
+            - "-W Hidden"
+            - "-w h -nop -ep un -E"
+            - "-w 1 -c"
+            - "-w h"
+        InitiatingProcessCommandLine|has_any:
+            - "-W Hidden"
+            - "-w h -nop -ep un -E"
+            - "-w 1 -c"
+            - "-w h"
+    condition: selection
+fields:
+    - TimeGenerated
+    - ActionType
+    - DeviceName
+    - InitiatingProcessAccountName
+    - InitiatingProcessFileName
+    - ProcessCommandLine
+    - InitiatingProcessCommandLine
+    - InitiatingProcessParentFileName
+    - Type
+falsepositives:
+    - Legitimate administrative tasks or scheduled tasks with command-line arguments that match
+level: high
