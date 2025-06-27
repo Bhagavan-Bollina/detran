@@ -33,3 +33,6 @@ fields:
 falsepositives:
     - Legitimate administrative tasks or scheduled tasks with command-line arguments that match
 level: high
+references:
+    - https://www.ired.team/offensive-security/lateral-movement/malicious-hidden-powershell-commands
+    - https://www.synacktiv.com/publications/traces-of-windows-remote-command-execution.html
